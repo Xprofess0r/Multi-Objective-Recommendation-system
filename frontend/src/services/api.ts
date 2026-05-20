@@ -1,8 +1,9 @@
 import axios from 'axios'
 
 // frontend/src/services/api.ts
-const BASE_URL = import.meta.env.VITE_API_URL ?? '';
-const api = axios.create({ baseURL: `${BASE_URL}/api` });
+const BASE_URL = (import.meta as any).env.VITE_API_URL ?? '';
+
+const api = axios.create({ baseURL: `${BASE_URL}/api` })
 
 // ── Overview ──────────────────────────────────────────────────────────────────
 export const fetchKPIs              = () => api.get('/overview/kpis').then(r => r.data)
